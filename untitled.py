@@ -22,7 +22,7 @@ BACKGROUND_IMAGE = Path(__file__).with_name("cinema_popcorn_bg.jpg.b64").read_te
 ).strip()
 
 st.markdown(
-    f"""
+    """
     <style>
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
     .stApp {
@@ -31,7 +31,7 @@ st.markdown(
             linear-gradient(90deg, rgba(5,5,5,.55), rgba(5,5,5,.74) 22%, rgba(5,5,5,.78) 50%, rgba(5,5,5,.72) 78%, rgba(5,5,5,.48)),
             radial-gradient(ellipse at 0% 50%, rgba(229,9,20,.22), transparent 34%),
             radial-gradient(ellipse at 100% 50%, rgba(229,9,20,.18), transparent 34%),
-            url("data:image/jpeg;base64,{BACKGROUND_IMAGE}");
+            url("data:image/jpeg;base64,BACKGROUND_IMAGE_DATA");
         background-size: cover, cover, cover, cover;
         background-position: center, left center, right center, center;
         background-attachment: fixed, fixed, fixed, fixed;
@@ -63,7 +63,7 @@ st.markdown(
     div[data-testid="stCaptionContainer"] { color: #898989; }
     hr { border-color: #292929; }
     </style>
-    """,
+    """.replace("BACKGROUND_IMAGE_DATA", BACKGROUND_IMAGE),
     unsafe_allow_html=True,
 )
 
