@@ -17,13 +17,24 @@ NETFLIX_RED = "#E50914"
 PANEL = "#141414"
 WHITE = "#F5F5F1"
 MUTED = "#A6A6A6"
+BACKGROUND_IMAGE = Path(__file__).with_name("cinema_popcorn_bg.jpg.b64").read_text(
+    encoding="ascii"
+).strip()
 
 st.markdown(
-    """
+    f"""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
     .stApp {
-        background: radial-gradient(ellipse at 50% -15%, rgba(229,9,20,.17), transparent 42%), #080808;
+        background-color: #080808;
+        background-image:
+            linear-gradient(90deg, rgba(5,5,5,.55), rgba(5,5,5,.74) 22%, rgba(5,5,5,.78) 50%, rgba(5,5,5,.72) 78%, rgba(5,5,5,.48)),
+            radial-gradient(ellipse at 0% 50%, rgba(229,9,20,.22), transparent 34%),
+            radial-gradient(ellipse at 100% 50%, rgba(229,9,20,.18), transparent 34%),
+            url("data:image/jpeg;base64,{BACKGROUND_IMAGE}");
+        background-size: cover, cover, cover, cover;
+        background-position: center, left center, right center, center;
+        background-attachment: fixed, fixed, fixed, fixed;
         color: #F5F5F1; font-family: 'DM Sans', sans-serif;
     }
     [data-testid="stSidebar"] { background: #101010; border-right: 1px solid #292929; }
@@ -32,9 +43,10 @@ st.markdown(
     .brand { color: #E50914; font-weight: 800; letter-spacing: .18em; font-size: .75rem; }
     .hero {
         position: relative; overflow: hidden; padding: 2rem 2.2rem 1.8rem;
-        border: 1px solid #343030; border-radius: 18px;
-        background: linear-gradient(110deg, rgba(32,20,20,.98), rgba(16,16,16,.96) 58%, rgba(48,8,12,.92));
-        box-shadow: 0 18px 55px rgba(0,0,0,.3);
+        border: 1px solid rgba(255,255,255,.11); border-radius: 18px;
+        background: linear-gradient(110deg, rgba(20,15,15,.92), rgba(12,12,12,.78) 58%, rgba(42,8,12,.87));
+        box-shadow: 0 18px 55px rgba(0,0,0,.44), inset 0 1px 0 rgba(255,255,255,.04);
+        backdrop-filter: blur(5px);
     }
     .hero:after { content: ''; position: absolute; right: -55px; top: -130px; width: 330px; height: 330px; border: 1px solid rgba(229,9,20,.22); border-radius: 50%; box-shadow: 0 0 0 34px rgba(229,9,20,.035), 0 0 0 70px rgba(229,9,20,.025); }
     .hero-title { color: #F5F5F1; font-size: clamp(2.15rem, 4vw, 3.5rem); font-weight: 800; letter-spacing: -.055em; line-height: 1.05; margin: .45rem 0 .55rem; }
